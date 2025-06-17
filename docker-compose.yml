@@ -1,0 +1,16 @@
+version: "3.4"
+
+services:
+  rovo2api:
+    image: deanxv/rovo2api:latest
+    container_name: rovo2api
+    restart: always
+    ports:
+      - "10111:10111"
+    volumes:
+      - ./data:/app/rovo2api/data
+    environment:
+      - RV_COOKIE=****** # cookie (多个请以,分隔)
+      - API_SECRET=123456 # [可选]接口密钥-修改此行为请求头校验的值(多个请以,分隔)
+      - CUSTOM_HEADER_KEY_ENABLED=false # [可选]是否启用自定义请求头键功能，设为true时可以在请求头中使用X-Custom-Keys传入鉴权值
+      - TZ=Asia/Shanghai
