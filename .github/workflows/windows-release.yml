@@ -28,7 +28,7 @@ jobs:
       - name: Build Backend
         run: |
           go mod download
-          go build -ldflags "-s -w -X 'rovo2api-private/common.Version=$(git describe --tags)'" -o rovo2api.exe
+          go build -ldflags "-s -w -X 'rovo2api/common.Version=$(git describe --tags)'" -o rovo2api.exe
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')

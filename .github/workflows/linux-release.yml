@@ -25,13 +25,13 @@ jobs:
       - name: Build Backend (amd64)
         run: |
           go mod download
-          go build -ldflags "-s -w -X 'rovo2api-private/common.Version=$(git describe --tags)' -extldflags '-static'" -o rovo2api
+          go build -ldflags "-s -w -X 'rovo2api/common.Version=$(git describe --tags)' -extldflags '-static'" -o rovo2api
 
       - name: Build Backend (arm64)
         run: |
           sudo apt-get update
           sudo apt-get install gcc-aarch64-linux-gnu
-          CC=aarch64-linux-gnu-gcc CGO_ENABLED=1 GOOS=linux GOARCH=arm64 go build -ldflags "-s -w -X 'rovo2api-private/common.Version=$(git describe --tags)' -extldflags '-static'" -o rovo2api-arm64
+          CC=aarch64-linux-gnu-gcc CGO_ENABLED=1 GOOS=linux GOARCH=arm64 go build -ldflags "-s -w -X 'rovo2api/common.Version=$(git describe --tags)' -extldflags '-static'" -o rovo2api-arm64
 
       - name: Release
         uses: softprops/action-gh-release@v1
